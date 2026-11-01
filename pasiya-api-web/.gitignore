@@ -1,0 +1,9 @@
+node_modules/
+.dev.vars
+.env
+.env.*
+!.env.example
+*service-account*.json
+*-firebase-adminsdk-*.json
+wrangler.toml.local
+.DS_Store

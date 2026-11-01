@@ -1,0 +1,29 @@
+name = "pasiya-api"
+main = "src/index.js"
+compatibility_date = "2026-10-30"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+# Only /api/* needs the Worker; everything else is a free static asset.
+run_worker_first = ["/api/*"]
+
+# Free AI models (Llama / GPT-OSS / DeepSeek distill) with no API key. Remove these 2 lines if you don't want it.
+[ai]
+binding = "AI"
+
+[vars]
+FIREBASE_PROJECT_ID = "pasiya-api"
+FIREBASE_AUTH_DOMAIN = "pasiya-api.firebaseapp.com"
+# Public web key (same as in public/index.html) - not a secret, so no need for `wrangler secret put`.
+FIREBASE_WEB_API_KEY = "AIzaSyCPZAmh7zUmU24aRtDvhGKXydh8DCDSaxk"
+ADMIN_EMAIL = "eshandinujaya86@gmail.com"
+PLATFORM_START = "2026-10-30T00:00:00Z"   # shown as "Uptime" on the dashboard
+RATE_LIMIT_PER_MIN = "40"
+
+# Optional secrets (wrangler secret put NAME):
+#   FIREBASE_SERVICE_ACCOUNT_JSON   (required - Firebase Console > Project settings > Service accounts > Generate new private key)
+#   GEMINI_API_KEY, OPENROUTER_API_KEY, GROQ_API_KEY, DEEPSEEK_API_KEY   (AI, any you have)
+#   TMDB_API_KEY                                          (movies)
+#   SCRAPER_URL, SCRAPER_SHARED_SECRET                    (optional YouTube/Facebook/TikTok/Instagram/MediaFire service)
